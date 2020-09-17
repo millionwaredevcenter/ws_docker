@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    ports:
+     - 8888:8080
+    volumes:
+     - /C:/workspace/jenkins_home
+     - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+    - JENKINS_JAVA_OPTIONS="-Dorg.apache.commons.jelly.tags.fmt.timeZone=Asia/Seoul"
+    networks:
+     - default
+    logging:
+      driver: json-file
+networks:
+  default:
+    driver: overlay
